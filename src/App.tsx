@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LayoutDashboard, Users, Settings, ClipboardCheck, Bell, Gift, Menu, X, Building2, Shield, Building, Database, Clock, FileText, GitBranch, ShoppingCart, BarChart3, Award, TrendingUp, ArrowRightLeft, Server, Code, Network, Activity } from 'lucide-react';
+import { LayoutDashboard, Users, Settings, ClipboardCheck, Bell, Gift, Menu, X, Building2, Shield, Building, Database, Clock, FileText, GitBranch, ShoppingCart, BarChart3, Award, TrendingUp, ArrowRightLeft, Server, Code, Network, Activity, Globe } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import CustomerLevelList from './components/CustomerLevelList';
 import LevelRulesConfig from './components/LevelRulesConfig';
@@ -22,6 +22,7 @@ import CustomerBenefitsReport from './components/analysis/benefits/CustomerBenef
 import SupplierBenefitsReport from './components/analysis/benefits/SupplierBenefitsReport';
 import LevelDistributionReport from './components/analysis/levels/LevelDistributionReport';
 import LevelContributionReport from './components/analysis/levels/LevelContributionReport';
+import ChannelAnalysis from './components/analysis/channels/ChannelAnalysis';
 import SystemIntegration from './components/integration/SystemIntegration';
 import APIManagement from './components/integration/APIManagement';
 import SystemArchitecture from './components/integration/SystemArchitecture';
@@ -30,7 +31,7 @@ import RealTimeMonitoring from './components/integration/RealTimeMonitoring';
 type PageType = 'dashboard' | 'customers' | 'rules' | 'review' | 'notifications' | 'benefits' |
   'customer-points' | 'branch-points' | 'points-consumption' | 'points-transfer' |
   'customer-benefits' | 'supplier-benefits' |
-  'level-distribution' | 'level-contribution' |
+  'level-distribution' | 'level-contribution' | 'channel-analysis' |
   'users' | 'roles' | 'branches' | 'parameters' | 'tasks' | 'logs' | 'workflows' | 'mall' |
   'system-integration' | 'api-management' | 'system-architecture' | 'realtime-monitoring';
 
@@ -61,6 +62,7 @@ function App() {
         { id: 'supplier-benefits' as PageType, name: '供应商权益报表', icon: Building2 },
         { id: 'level-distribution' as PageType, name: '客户等级分布', icon: BarChart3 },
         { id: 'level-contribution' as PageType, name: '等级贡献度分析', icon: TrendingUp },
+        { id: 'channel-analysis' as PageType, name: '电子渠道分析', icon: Globe },
       ]
     },
     {
@@ -117,6 +119,8 @@ function App() {
         return <LevelDistributionReport />;
       case 'level-contribution':
         return <LevelContributionReport />;
+      case 'channel-analysis':
+        return <ChannelAnalysis />;
       case 'system-integration':
         return <SystemIntegration />;
       case 'api-management':
