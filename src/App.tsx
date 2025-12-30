@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LayoutDashboard, Users, Settings, ClipboardCheck, Bell, Gift, Menu, X, Building2, Shield, Building, Database, Clock, FileText, GitBranch, ShoppingCart, BarChart3, Award, TrendingUp, ArrowRightLeft, Server, Code, Network, Activity, Globe } from 'lucide-react';
+import { LayoutDashboard, Users, Settings, ClipboardCheck, Bell, Gift, Menu, X, Building2, Shield, Building, Database, Clock, FileText, GitBranch, ShoppingCart, BarChart3, Award, TrendingUp, ArrowRightLeft, Server, Code, Network, Activity, Globe, Play, Lock, Calendar, Merge, Target, DollarSign, AlertTriangle } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import CustomerLevelList from './components/CustomerLevelList';
 import LevelRulesConfig from './components/LevelRulesConfig';
@@ -27,11 +27,30 @@ import SystemIntegration from './components/integration/SystemIntegration';
 import APIManagement from './components/integration/APIManagement';
 import SystemArchitecture from './components/integration/SystemArchitecture';
 import RealTimeMonitoring from './components/integration/RealTimeMonitoring';
+import RuleConfig from './components/points/acquisition/RuleConfig';
+import AutoDistribution from './components/points/acquisition/AutoDistribution';
+import ManualAdjustment from './components/points/acquisition/ManualAdjustment';
+import AccountManagement from './components/points/account/AccountManagement';
+import StatusControl from './components/points/account/StatusControl';
+import ExpiryManagement from './components/points/account/ExpiryManagement';
+import BenefitsExchange from './components/points/consumption/BenefitsExchange';
+import TransferMerge from './components/points/consumption/TransferMerge';
+import CampaignManagement from './components/points/operations/CampaignManagement';
+import CustomerTiering from './components/points/operations/CustomerTiering';
+import PointsNotificationCenter from './components/points/operations/NotificationCenter';
+import CostReconciliation from './components/points/operations/CostReconciliation';
+import Ledger from './components/points/operations/Ledger';
+import RiskControl from './components/points/operations/RiskControl';
 
 type PageType = 'dashboard' | 'customers' | 'rules' | 'review' | 'notifications' | 'benefits' |
   'customer-points' | 'branch-points' | 'points-consumption' | 'points-transfer' |
   'customer-benefits' | 'supplier-benefits' |
   'level-distribution' | 'level-contribution' | 'channel-analysis' |
+  'points-rule-config' | 'points-auto-distribution' | 'points-manual-adjustment' |
+  'points-account-management' | 'points-status-control' | 'points-expiry-management' |
+  'points-benefits-exchange' | 'points-transfer-merge' |
+  'points-campaign-management' | 'points-customer-tiering' | 'points-notification-center' |
+  'points-cost-reconciliation' | 'points-ledger' | 'points-risk-control' |
   'users' | 'roles' | 'branches' | 'parameters' | 'tasks' | 'logs' | 'workflows' | 'mall' |
   'system-integration' | 'api-management' | 'system-architecture' | 'realtime-monitoring';
 
@@ -63,6 +82,25 @@ function App() {
         { id: 'level-distribution' as PageType, name: '客户等级分布', icon: BarChart3 },
         { id: 'level-contribution' as PageType, name: '等级贡献度分析', icon: TrendingUp },
         { id: 'channel-analysis' as PageType, name: '电子渠道分析', icon: Globe },
+      ]
+    },
+    {
+      section: '积分管理',
+      items: [
+        { id: 'points-rule-config' as PageType, name: '规则配置', icon: Settings },
+        { id: 'points-auto-distribution' as PageType, name: '自动计算发放', icon: Play },
+        { id: 'points-manual-adjustment' as PageType, name: '手动调整', icon: FileText },
+        { id: 'points-account-management' as PageType, name: '账户管理', icon: Database },
+        { id: 'points-status-control' as PageType, name: '状态控制', icon: Lock },
+        { id: 'points-expiry-management' as PageType, name: '过期管理', icon: Calendar },
+        { id: 'points-benefits-exchange' as PageType, name: '权益兑换', icon: Gift },
+        { id: 'points-transfer-merge' as PageType, name: '转赠合并', icon: Merge },
+        { id: 'points-campaign-management' as PageType, name: '计划管理', icon: Target },
+        { id: 'points-customer-tiering' as PageType, name: '客户分层', icon: Users },
+        { id: 'points-notification-center' as PageType, name: '提醒通知', icon: Bell },
+        { id: 'points-cost-reconciliation' as PageType, name: '成本核对', icon: DollarSign },
+        { id: 'points-ledger' as PageType, name: '运营台账', icon: FileText },
+        { id: 'points-risk-control' as PageType, name: '风控管理', icon: AlertTriangle },
       ]
     },
     {
@@ -121,6 +159,34 @@ function App() {
         return <LevelContributionReport />;
       case 'channel-analysis':
         return <ChannelAnalysis />;
+      case 'points-rule-config':
+        return <RuleConfig />;
+      case 'points-auto-distribution':
+        return <AutoDistribution />;
+      case 'points-manual-adjustment':
+        return <ManualAdjustment />;
+      case 'points-account-management':
+        return <AccountManagement />;
+      case 'points-status-control':
+        return <StatusControl />;
+      case 'points-expiry-management':
+        return <ExpiryManagement />;
+      case 'points-benefits-exchange':
+        return <BenefitsExchange />;
+      case 'points-transfer-merge':
+        return <TransferMerge />;
+      case 'points-campaign-management':
+        return <CampaignManagement />;
+      case 'points-customer-tiering':
+        return <CustomerTiering />;
+      case 'points-notification-center':
+        return <PointsNotificationCenter />;
+      case 'points-cost-reconciliation':
+        return <CostReconciliation />;
+      case 'points-ledger':
+        return <Ledger />;
+      case 'points-risk-control':
+        return <RiskControl />;
       case 'system-integration':
         return <SystemIntegration />;
       case 'api-management':
