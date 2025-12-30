@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LayoutDashboard, Users, Settings, ClipboardCheck, Bell, Gift, Menu, X, Building2, Shield, Building, Database, Clock, FileText, GitBranch, ShoppingCart, BarChart3, Award, TrendingUp, ArrowRightLeft, Server, Code, Network, Activity, Globe, Play, Lock, Calendar, Merge, Target, DollarSign, AlertTriangle } from 'lucide-react';
+import { LayoutDashboard, Users, Settings, ClipboardCheck, Bell, Gift, Menu, X, Building2, Shield, Building, Database, Clock, FileText, GitBranch, ShoppingCart, BarChart3, Award, TrendingUp, ArrowRightLeft, Server, Code, Network, Activity, Globe, Play, Lock, Calendar, Merge, Target, DollarSign, AlertTriangle, Package, CheckCircle, Send, RotateCcw, UserPlus, Edit } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import CustomerLevelList from './components/CustomerLevelList';
 import LevelRulesConfig from './components/LevelRulesConfig';
@@ -41,6 +41,18 @@ import PointsNotificationCenter from './components/points/operations/Notificatio
 import CostReconciliation from './components/points/operations/CostReconciliation';
 import Ledger from './components/points/operations/Ledger';
 import RiskControl from './components/points/operations/RiskControl';
+import SupplierManagement from './components/benefits/supplier/SupplierManagement';
+import BenefitAccessManagement from './components/benefits/pool/BenefitAccessManagement';
+import CategoryManagement from './components/benefits/pool/CategoryManagement';
+import InventoryManagement from './components/benefits/pool/InventoryManagement';
+import PlanManagement from './components/benefits/distribution/PlanManagement';
+import BenefitDistribution from './components/benefits/distribution/BenefitDistribution';
+import BenefitVerification from './components/benefits/distribution/BenefitVerification';
+import BenefitReversal from './components/benefits/distribution/BenefitReversal';
+import EnterpriseAccount from './components/benefits/account/EnterpriseAccount';
+import PersonalAccount from './components/benefits/account/PersonalAccount';
+import AccountAdjustment from './components/benefits/account/AccountAdjustment';
+import AccountFreeze from './components/benefits/account/AccountFreeze';
 
 type PageType = 'dashboard' | 'customers' | 'rules' | 'review' | 'notifications' | 'benefits' |
   'customer-points' | 'branch-points' | 'points-consumption' | 'points-transfer' |
@@ -51,6 +63,9 @@ type PageType = 'dashboard' | 'customers' | 'rules' | 'review' | 'notifications'
   'points-benefits-exchange' | 'points-transfer-merge' |
   'points-campaign-management' | 'points-customer-tiering' | 'points-notification-center' |
   'points-cost-reconciliation' | 'points-ledger' | 'points-risk-control' |
+  'benefit-supplier-management' | 'benefit-access-management' | 'benefit-category-management' | 'benefit-inventory-management' |
+  'benefit-plan-management' | 'benefit-distribution' | 'benefit-verification' | 'benefit-reversal' |
+  'benefit-enterprise-account' | 'benefit-personal-account' | 'benefit-account-adjustment' | 'benefit-account-freeze' |
   'users' | 'roles' | 'branches' | 'parameters' | 'tasks' | 'logs' | 'workflows' | 'mall' |
   'system-integration' | 'api-management' | 'system-architecture' | 'realtime-monitoring';
 
@@ -88,8 +103,8 @@ function App() {
       section: '积分管理',
       items: [
         { id: 'points-rule-config' as PageType, name: '规则配置', icon: Settings },
-        { id: 'points-auto-distribution' as PageType, name: '自动计算发放', icon: Play },
-        { id: 'points-manual-adjustment' as PageType, name: '手动调整', icon: FileText },
+        { id: 'points-auto-distribution' as PageType, name: '自动发放明细', icon: FileText },
+        { id: 'points-manual-adjustment' as PageType, name: '手动调整', icon: Edit },
         { id: 'points-account-management' as PageType, name: '账户管理', icon: Database },
         { id: 'points-status-control' as PageType, name: '状态控制', icon: Lock },
         { id: 'points-expiry-management' as PageType, name: '过期管理', icon: Calendar },
@@ -101,6 +116,23 @@ function App() {
         { id: 'points-cost-reconciliation' as PageType, name: '成本核对', icon: DollarSign },
         { id: 'points-ledger' as PageType, name: '运营台账', icon: FileText },
         { id: 'points-risk-control' as PageType, name: '风控管理', icon: AlertTriangle },
+      ]
+    },
+    {
+      section: '权益管理',
+      items: [
+        { id: 'benefit-supplier-management' as PageType, name: '供应商管理', icon: Building },
+        { id: 'benefit-access-management' as PageType, name: '权益接入', icon: CheckCircle },
+        { id: 'benefit-category-management' as PageType, name: '类目管理', icon: Package },
+        { id: 'benefit-inventory-management' as PageType, name: '库存管理', icon: Package },
+        { id: 'benefit-plan-management' as PageType, name: '计划管理', icon: Target },
+        { id: 'benefit-distribution' as PageType, name: '权益发放', icon: Send },
+        { id: 'benefit-verification' as PageType, name: '权益核销', icon: CheckCircle },
+        { id: 'benefit-reversal' as PageType, name: '权益冲正', icon: RotateCcw },
+        { id: 'benefit-enterprise-account' as PageType, name: '企业账户', icon: Building2 },
+        { id: 'benefit-personal-account' as PageType, name: '个人账户', icon: UserPlus },
+        { id: 'benefit-account-adjustment' as PageType, name: '账户调整', icon: Edit },
+        { id: 'benefit-account-freeze' as PageType, name: '账户冻结', icon: Lock },
       ]
     },
     {
@@ -187,6 +219,30 @@ function App() {
         return <Ledger />;
       case 'points-risk-control':
         return <RiskControl />;
+      case 'benefit-supplier-management':
+        return <SupplierManagement />;
+      case 'benefit-access-management':
+        return <BenefitAccessManagement />;
+      case 'benefit-category-management':
+        return <CategoryManagement />;
+      case 'benefit-inventory-management':
+        return <InventoryManagement />;
+      case 'benefit-plan-management':
+        return <PlanManagement />;
+      case 'benefit-distribution':
+        return <BenefitDistribution />;
+      case 'benefit-verification':
+        return <BenefitVerification />;
+      case 'benefit-reversal':
+        return <BenefitReversal />;
+      case 'benefit-enterprise-account':
+        return <EnterpriseAccount />;
+      case 'benefit-personal-account':
+        return <PersonalAccount />;
+      case 'benefit-account-adjustment':
+        return <AccountAdjustment />;
+      case 'benefit-account-freeze':
+        return <AccountFreeze />;
       case 'system-integration':
         return <SystemIntegration />;
       case 'api-management':
